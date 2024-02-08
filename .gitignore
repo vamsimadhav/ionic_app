@@ -32,4 +32,4 @@ yarn-error.log*
 /dist
 /electron
 /ios
-/android
+#android
