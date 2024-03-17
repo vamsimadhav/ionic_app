@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package io.ionic_vamsi.capacitor_app;
 
 import android.content.Context;
 import android.os.UserManager;
