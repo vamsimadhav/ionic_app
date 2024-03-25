@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "io.ionic_vamsi.capacitor_app"
+    namespace "io.ionic.capacitorapp"
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
         multiDexEnabled true
-        applicationId "io.ionic_vamsi.capacitor_app"
+        applicationId "io.ionic.capacitorapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -1,4 +1,4 @@
-package io.ionic_vamsi.capacitor_app;
+package io.ionic.capacitorapp;
 
 import com.getcapacitor.BridgeActivity;
 import co.boundstate.BranchDeepLinks;

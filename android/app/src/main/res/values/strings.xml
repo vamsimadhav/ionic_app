@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Capacitor Test App</string>
     <string name="title_activity_main">Test App</string>
-    <string name="package_name">io.ionic_vamsi.capacitor_app</string>
+    <string name="package_name">io.ionic.capacitorapp</string>
     <string name="applink_host">gseli.app.link</string>
     <string name="applink_host_alternate">gseli-alternate.app.link</string>
     <string name="deeplink_scheme">capacitortest</string>
