@@ -17,10 +17,13 @@ import {
   useIonRouter,
 } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
-import { logInOutline, personCircleOutline } from 'ionicons/icons';
+import { logInOutline, notifications, personCircleOutline } from 'ionicons/icons';
 import FCC from '../assets/fcc.svg';
 import Intro from '../components/Intro';
 import { Preferences } from '@capacitor/preferences';
+import PushNotificationPage from './PushNotification';
+import { Plugins } from '@capacitor/core';
+const { LocalNotifications } = Plugins;
 
 const INTRO_KEY = 'intro-seen';
 
@@ -54,6 +57,24 @@ const Login: React.FC = () => {
   const seeIntroAgain = () => {
     setIntroSeen(false);
     Preferences.remove({ key: INTRO_KEY });
+  };
+
+  const sendTestNotification = async () => {
+    try {
+      await LocalNotifications.schedule({
+        notifications: [
+          {
+            title: 'Test Notification',
+            body: 'This is a test notification generated from the app itself.',
+            id: 1, // Unique ID for the notification
+            schedule: { at: new Date(Date.now() + 1000) } // Display the notification after 1 second
+          }
+        ]
+      });
+      console.log('Test notification scheduled successfully.');
+    } catch (error) {
+      console.error('Error scheduling test notification:', error);
+    }
   };
 
   return (
@@ -101,6 +122,10 @@ const Login: React.FC = () => {
                       </form>
                     </IonCardContent>
                   </IonCard>
+                  <IonButton onClick={sendTestNotification} color={'secondary'} type="button" expand="block" className="ion-margin-top">
+                    Send Test Notification
+                    <IonIcon icon={notifications} slot="end" />
+                  </IonButton>
                 </IonCol>
               </IonRow>
             </IonGrid>
