@@ -21,7 +21,6 @@ import { logInOutline, notifications, personCircleOutline } from 'ionicons/icons
 import FCC from '../assets/fcc.svg';
 import Intro from '../components/Intro';
 import { Preferences } from '@capacitor/preferences';
-import PushNotificationPage from './PushNotification';
 import { Plugins } from '@capacitor/core';
 const { LocalNotifications } = Plugins;
 
