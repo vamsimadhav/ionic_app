@@ -19,7 +19,7 @@ def capacitor_pods
   pod 'CapacitorLocalNotifications', :path => '../../node_modules/@capacitor/local-notifications'
   pod 'CapacitorPreferences', :path => '../../node_modules/@capacitor/preferences'
   pod 'CapacitorStatusBar', :path => '../../node_modules/@capacitor/status-bar'
-  pod 'CapacitorBranchDeepLinks', :path => '../../node_modules/capacitor-branch-deep-links'
+  pod 'CapacitorBranchDeepLinks', :path => '../../../../SDKs/capacitor-branch-deep-links'
 end
 
 target 'App' do

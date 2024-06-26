@@ -27,4 +27,4 @@ include ':capacitor-status-bar'
 project(':capacitor-status-bar').projectDir = new File('../node_modules/@capacitor/status-bar/android')
 
 include ':capacitor-branch-deep-links'
-project(':capacitor-branch-deep-links').projectDir = new File('../node_modules/capacitor-branch-deep-links/android')
+project(':capacitor-branch-deep-links').projectDir = new File('../../../SDKs/capacitor-branch-deep-links/android')

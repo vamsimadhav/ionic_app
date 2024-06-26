@@ -23,6 +23,7 @@ import Intro from '../components/Intro';
 import { Preferences } from '@capacitor/preferences';
 import { Plugins } from '@capacitor/core';
 import { ActionPerformed } from '@capacitor/local-notifications';
+import { BranchDeepLinks } from 'capacitor-branch-deep-links';
 const { LocalNotifications } = Plugins;
 
 const INTRO_KEY = 'intro-seen';
@@ -67,8 +68,8 @@ const Login: React.FC = () => {
             title: 'Test Notification',
             body: 'This is a test notification generated from the app itself.',
             id: 1, // Unique ID for the notification
-            schedule: { at: new Date(Date.now() + 1000),
-            extra: { myData: "https://www.branch.io" }  } // Display the notification after 1 second
+            schedule: { at: new Date(Date.now() + 1000)},
+            extra: { branch: "https://capacitor.app.link/jvgiO8eBKKb" } // Display the notification after 1 second
           }
         ]
       });
@@ -81,8 +82,9 @@ const Login: React.FC = () => {
   useEffect(() => {
     // Add event listener for localNotificationActionPerformed event
     const notificationClickedHandler = (notificationAction: ActionPerformed) => {
-      console.log('Notification clicked:', notificationAction.notification.extra.myData);
+      console.log('Notification clicked:', notificationAction.notification.extra.branch);
       // Handle the notification click here
+      BranchDeepLinks.handleUrl(notificationAction.notification.extra)
     };
     Plugins.LocalNotifications.addListener('localNotificationActionPerformed', notificationClickedHandler);
 
