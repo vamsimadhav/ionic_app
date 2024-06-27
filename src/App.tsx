@@ -26,32 +26,54 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Menu from './pages/Menu';
 import { Browser } from '@capacitor/browser';
+import MyModal from './assets/MyModal'
+import React, { useState } from 'react';
 
 setupIonicReact();
 
 const App = () => {
-  useEffect(() => {
-    branchListener();
-  }, [])
+  // useEffect(() => {
+  //   branchListener();
+  // }, [])
+
+  const [showModal, setShowModal] = useState(false);
+  const [modalData, setModalData] = useState<any>(null);
 
   const openWebview = async (canonical_url:string) => {
     await Browser.open({ url: canonical_url });
   };
 
-  const branchListener = () => {
-    BranchDeepLinks.addListener('init', (event) => {
-      console.log(`[branch.io] Success to initialize: ${JSON.stringify(event.referringParams)}`);
-      if (event.referringParams.$canonical_url) {
-        console.log(`[branch.io] $canonical_url : ${event.referringParams.$canonical_url}`);
-        //openWebview(event.referringParams.$canonical_url);
-        Browser.open({ url: event.referringParams.$canonical_url });
-      }
-    });
+  // const branchListener = () => {
+  //   BranchDeepLinks.addListener('init', (event) => {
+  //     console.log(`[branch.io] Success to initialize: ${JSON.stringify(event.referringParams)}`);
+  //     if (event.referringParams.$canonical_url) {
+  //       console.log(`[branch.io] $canonical_url : ${event.referringParams.$canonical_url}`);
+  //       //openWebview(event.referringParams.$canonical_url);
+  //       Browser.open({ url: event.referringParams.$canonical_url });
+  //     }
+  //   });
     
-    BranchDeepLinks.addListener('initError', (error) => {
-      console.log(`[branch.io] Fails to initialize: ${error}`);
-    });
-  }
+  //   BranchDeepLinks.addListener('initError', (error) => {
+  //     console.log(`[branch.io] Fails to initialize: ${error}`);
+  //   });
+  // }
+
+  useEffect(() => {
+    const branchListener = () => {
+      BranchDeepLinks.addListener('init', (event) => {
+        console.log(`[branch.io] Success to initialize: ${JSON.stringify(event.referringParams)}`);
+        if (event.referringParams.$canonical_url) {
+          console.log(`[branch.io] $canonical_url : ${event.referringParams.$canonical_url}`);
+          Browser.open({ url: event.referringParams.$canonical_url });
+        }
+        // Set the data and show the modal
+        setModalData(event.referringParams);
+        setShowModal(true);
+      });
+    };
+
+    branchListener();
+  }, []);
 
  return (
   <IonApp>
@@ -64,6 +86,7 @@ const App = () => {
         <Route component={Menu} path="/app" />
       </IonRouterOutlet>
     </IonReactRouter>
+    <MyModal isOpen={showModal} onClose={() => setShowModal(false)} data={modalData} />
   </IonApp>
   );
  }
