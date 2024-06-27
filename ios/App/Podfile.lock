@@ -1,26 +1,26 @@
 PODS:
   - BranchSDK (3.4.4)
-  - Capacitor (5.0.1):
+  - Capacitor (6.1.0):
     - CapacitorCordova
-  - CapacitorApp (5.0.1):
+  - CapacitorApp (6.0.0):
     - Capacitor
   - CapacitorBranchDeepLinks (8.0.0):
     - BranchSDK
     - Capacitor
-  - CapacitorBrowser (5.2.0):
+  - CapacitorBrowser (6.0.1):
     - Capacitor
-  - CapacitorCamera (5.0.2):
+  - CapacitorCamera (6.0.1):
     - Capacitor
-  - CapacitorCordova (5.0.1)
-  - CapacitorHaptics (5.0.1):
+  - CapacitorCordova (6.1.0)
+  - CapacitorHaptics (6.0.0):
     - Capacitor
-  - CapacitorKeyboard (5.0.1):
+  - CapacitorKeyboard (6.0.1):
     - Capacitor
-  - CapacitorLocalNotifications (5.0.7):
+  - CapacitorLocalNotifications (6.0.0):
     - Capacitor
-  - CapacitorPreferences (5.0.1):
+  - CapacitorPreferences (6.0.1):
     - Capacitor
-  - CapacitorStatusBar (5.0.1):
+  - CapacitorStatusBar (6.0.0):
     - Capacitor
 
 DEPENDENCIES:
@@ -66,17 +66,17 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   BranchSDK: 28bec34fb99c53ab8e86b7bf69cc55a4505fe0b3
-  Capacitor: c550a8485d00d5d92b4f91a245f43555a2230eb6
-  CapacitorApp: 23d62678d1092403c9c32d8b53c0cdd0da29fb2c
+  Capacitor: 187bd7847b6f71467015a20200a1a071be3e5f14
+  CapacitorApp: 9d53aec7101f7b030a950c5bdc4df8612576b279
   CapacitorBranchDeepLinks: 1fa2ade68fab2741983bff04d201ea21399b39e4
-  CapacitorBrowser: a6deae9e5bf87f62b62a753cff7992c5def9e771
-  CapacitorCamera: 15face5f9e030e480929a2c989deaaf3eb0d3947
-  CapacitorCordova: 4f8cf089c691f0e21032d22b1014808308cbc467
-  CapacitorHaptics: 4bdfc3b0137e7d9040892c81332827929b896d3c
-  CapacitorKeyboard: 5e1667b7b70e23b147f9fc91bafa458be41cba77
-  CapacitorLocalNotifications: c58afadd159f6bc540ef9b3cbdbc82510a2bf112
-  CapacitorPreferences: 3c5b15a8501f0e3297bd8636f1e573bbf47942de
-  CapacitorStatusBar: 4edd082a8dadcedb5b1fa2b8480d67a220c79849
+  CapacitorBrowser: 473c7fd70ddbe541608ff09ec1be14da0078279e
+  CapacitorCamera: 3b77b3e8311b98220de65e63445c0e4d0b30ce3a
+  CapacitorCordova: be703980ca797f847c3356f78fa175d21c8330c2
+  CapacitorHaptics: 9ebc9363f0e9b8eb4295088a0b474530acf1859b
+  CapacitorKeyboard: 5f32a712adf41e07a61caafb82cf29fb6d8ba123
+  CapacitorLocalNotifications: 4ab68f0be5f697a579558fadd307d823a9ec1c26
+  CapacitorPreferences: 72909b165bc7807103778ddbb86d5d8ce06abf71
+  CapacitorStatusBar: 2e4369f99166125435641b1908d05f561eaba6f6
 
 PODFILE CHECKSUM: c2557d1c004f9d29eaee6676b051e27c72f43454
 

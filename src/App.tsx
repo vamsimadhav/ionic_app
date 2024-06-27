@@ -2,7 +2,7 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { useEffect } from 'react';
-import { BranchDeepLinks } from 'capacitor-branch-deep-links';
+import { BranchDeepLinks } from'capacitor-branch-deep-links';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -28,6 +28,7 @@ import Menu from './pages/Menu';
 import { Browser } from '@capacitor/browser';
 import MyModal from './assets/MyModal'
 import React, { useState } from 'react';
+
 
 setupIonicReact();
 
