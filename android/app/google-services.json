@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "748937363537",
+    "project_id": "capacitor-app-51faf",
+    "storage_bucket": "capacitor-app-51faf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748937363537:android:85074e4a7b0b7be8a1f870",
+        "android_client_info": {
+          "package_name": "io.ionic.capacitorapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3gGT76732fojNq_fAJnYch3vVtrpEX_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
