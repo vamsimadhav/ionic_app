@@ -29,6 +29,13 @@ import { Browser } from '@capacitor/browser';
 import MyModal from './assets/MyModal'
 import React, { useState } from 'react';
 
+import {
+  ActionPerformed,
+  PushNotificationSchema,
+  PushNotifications,
+  Token,
+} from '@capacitor/push-notifications';
+
 
 setupIonicReact();
 
@@ -44,28 +51,14 @@ const App = () => {
     await Browser.open({ url: canonical_url });
   };
 
-  // const branchListener = () => {
-  //   BranchDeepLinks.addListener('init', (event) => {
-  //     console.log(`[branch.io] Success to initialize: ${JSON.stringify(event.referringParams)}`);
-  //     if (event.referringParams.$canonical_url) {
-  //       console.log(`[branch.io] $canonical_url : ${event.referringParams.$canonical_url}`);
-  //       //openWebview(event.referringParams.$canonical_url);
-  //       Browser.open({ url: event.referringParams.$canonical_url });
-  //     }
-  //   });
-    
-  //   BranchDeepLinks.addListener('initError', (error) => {
-  //     console.log(`[branch.io] Fails to initialize: ${error}`);
-  //   });
-  // }
-
   useEffect(() => {
     const branchListener = () => {
       BranchDeepLinks.addListener('init', (event) => {
         console.log(`[branch.io] Success to initialize: ${JSON.stringify(event.referringParams)}`);
-        if (event.referringParams.$canonical_url) {
+        if (event.referringParams) {
           console.log(`[branch.io] $canonical_url : ${event.referringParams.$canonical_url}`);
-          Browser.open({ url: event.referringParams.$canonical_url });
+          //Browser.open({ url: event.referringParams.$canonical_url });
+          openWebview(JSON.stringify(event.referringParams));
         }
         // Set the data and show the modal
         setModalData(event.referringParams);
@@ -74,7 +67,40 @@ const App = () => {
     };
 
     branchListener();
+    initializePushNotifications();
   }, []);
+
+  const initializePushNotifications = () => {
+    PushNotifications.requestPermissions().then(result => {
+      if (result.receive === 'granted') {
+        // Register with Apple / Google to receive push via APNS/FCM
+        PushNotifications.register();
+      } else {
+        // Handle permission not granted
+        console.log('Push notification permissions not granted');
+      }
+    });
+
+    // Push Notifications listeners
+    PushNotifications.addListener('registration', (token: Token) => {
+      console.log('Push registration success, token: ' + token.value);
+      // Handle token registration, send to server, etc.
+    });
+
+    PushNotifications.addListener('registrationError', (error: any) => {
+      console.error('Error on registration: ' + JSON.stringify(error));
+    });
+
+    PushNotifications.addListener('pushNotificationReceived', (notification: PushNotificationSchema) => {
+      console.log('Push received: ' + JSON.stringify(notification));
+      // Handle received push notification, show alert or process data
+    });
+
+    PushNotifications.addListener('pushNotificationActionPerformed', (notification: ActionPerformed) => {
+      console.log('Push action performed: ' + JSON.stringify(notification));
+      // Handle action performed on notification (e.g., open specific page)
+    });
+  };
 
  return (
   <IonApp>
