@@ -55,11 +55,11 @@ const App = () => {
     const branchListener = () => {
       BranchDeepLinks.addListener('init', (event) => {
         console.log(`[branch.io] Success to initialize: ${JSON.stringify(event.referringParams)}`);
-        if (event.referringParams) {
-          console.log(`[branch.io] $canonical_url : ${event.referringParams.$canonical_url}`);
-          //Browser.open({ url: event.referringParams.$canonical_url });
-          openWebview(JSON.stringify(event.referringParams));
-        }
+        // if (event.referringParams['+clicked_branch_link']) {
+        //   console.log(`[branch.io] $canonical_url : ${event.referringParams.$deeplink_path}`);
+        //   //Browser.open({ url: event.referringParams.$canonical_url });
+        //   openWebview(JSON.stringify(event.referringParams));
+        // }
         // Set the data and show the modal
         setModalData(event.referringParams);
         setShowModal(true);
@@ -94,11 +94,19 @@ const App = () => {
     PushNotifications.addListener('pushNotificationReceived', (notification: PushNotificationSchema) => {
       console.log('Push received: ' + JSON.stringify(notification));
       // Handle received push notification, show alert or process data
+      console.log('Push action performed: ' + JSON.stringify(notification));
+      // Handle action performed on notification (e.g., open specific page)
+      console.log('Notification clicked:', notification);
+      // Handle the notification click here
+      BranchDeepLinks.handleUrl(notification.data)
     });
 
     PushNotifications.addListener('pushNotificationActionPerformed', (notification: ActionPerformed) => {
-      console.log('Push action performed: ' + JSON.stringify(notification));
-      // Handle action performed on notification (e.g., open specific page)
+      // console.log('Push action performed: ' + JSON.stringify(notification));
+      // // Handle action performed on notification (e.g., open specific page)
+      // console.log('Notification clicked:', notification);
+      // // Handle the notification click here
+      // BranchDeepLinks.handleUrl(notification.notification.data)
     });
   };
 

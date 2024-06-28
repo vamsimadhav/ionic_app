@@ -2,6 +2,7 @@ import UIKit
 import BranchSDK
 import Capacitor
 import UserNotifications
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -9,6 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        //FirebaseApp.configure()
         // Override point for customization after application launch.
         //Branch.setUseTestBranchKey(true) // If you are using the TEST key
         
@@ -77,5 +79,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //        Branch.getInstance().continue(userActivity)
 //        return ApplicationDelegateProxy.shared.application(application, continue: userActivity, restorationHandler: restorationHandler)
 //    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+      Messaging.messaging().apnsToken = deviceToken
+      Messaging.messaging().token(completion: { (token, error) in
+        if let error = error {
+            NotificationCenter.default.post(name: .capacitorDidFailToRegisterForRemoteNotifications, object: error)
+        } else if let token = token {
+            NotificationCenter.default.post(name: .capacitorDidRegisterForRemoteNotifications, object: token)
+        }
+      })
+    }
+
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+      NotificationCenter.default.post(name: .capacitorDidFailToRegisterForRemoteNotifications, object: error)
+    }
     
 }
